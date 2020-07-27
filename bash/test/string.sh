@@ -7,6 +7,7 @@ test_string_sh() {
 
 export -f test_string_sh
 
+# shellcheck disable=SC2034
 test_string_sh_split() {
     local actual=()
     local str="12 34 56"

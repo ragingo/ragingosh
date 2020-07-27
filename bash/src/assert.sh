@@ -16,8 +16,12 @@ export -f assert_equals
 assert_array_equals() {
     local -n __assert_array_equals_a=$1
     local -n __assert_array_equals_b=$2
-    assert_equals "${#__assert_array_equals_a[@]}" "${#__assert_array_equals_b[@]}"
-    # TODO: 配列の中身チェック
+    local size_a="${#__assert_array_equals_a[@]}"
+    local size_b="${#__assert_array_equals_b[@]}"
+    assert_equals "$size_a" "$size_b"
+    for ((i=0; i<"$size_a"; i++)); do
+        assert_equals "${__assert_array_equals_a[$i]}" "${__assert_array_equals_b[$i]}"
+    done
 }
 
 export -f assert_array_equals
