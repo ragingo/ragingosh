@@ -6,6 +6,7 @@ include_guard STRING_SH || return 0
 split() {
     local -n __split_arr=$1
     local str=$2
+    # shellcheck disable=SC2206
     __split_arr=(${str// / })
 }
 

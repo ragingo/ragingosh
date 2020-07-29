@@ -11,13 +11,18 @@ pushd "$BASH_SRC_DIR"
 source ../src/include.sh
 include ../src/assert.sh
 include ../src/string.sh
+include ./test.sh
 include ./report.sh
 include ./string.sh
 # shellcheck disable=SC2164
 popd
 
 main() {
+    shellcheck -Calways "$BASH_SRC_DIR"/../src/*.sh
+    echo ""
+    echo "------------------------------------------------------------"
     bash -c 'set -u; test_string_sh'
+    echo "------------------------------------------------------------"
 }
 
 main
