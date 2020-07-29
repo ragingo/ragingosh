@@ -64,3 +64,21 @@ test_string_sh_c_to_i() {
 }
 
 export -f test_string_sh_c_to_i
+
+test_string_sh_substr() {
+    local expected="def"
+    local actual
+    actual=$(substr abcdefghijklmn 3 3)
+    assert_equals "$expected" "$actual"
+}
+
+export -f test_string_sh_substr
+
+test_string_sh_trim_spaces() {
+    local expected="aa bb"
+    local actual
+    actual=$(echo "  aa bb  " | trim_spaces)
+    assert_equals "$expected" "$actual"
+}
+
+export -f test_string_sh_trim_spaces

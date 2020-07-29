@@ -52,14 +52,7 @@ substr() {
     local str=$1
     local start=$2
     local len=$3
-    local end=0
-    if [ "$len" = "" ]; then
-        end=""
-    else
-        end=$((start + len))
-    fi
-    start=$((start + 1))
-    echo "$str" | cut -d' ' -f "$start-$end"
+    echo "${str:$start:$len}"
 }
 
 export -f substr
